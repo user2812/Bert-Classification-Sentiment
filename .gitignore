@@ -216,3 +216,22 @@ __marimo__/
 
 # Streamlit
 .streamlit/secrets.toml
+
+# Modèles et checkpoints
+checkpoints/
+*.pt
+*.pth
+*.bin
+*.safetensors
+
+# Données
+data/*.csv
+data/*.json
+data/*.tsv
+
+# Résultats
+results/
+
+# OS
+.DS_Store
+Thumbs.db
