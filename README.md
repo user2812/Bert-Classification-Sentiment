@@ -53,6 +53,7 @@ Ratio max/min = 1.43 < 2:1 → déséquilibre modéré, aucune stratégie partic
 
 ## Structure du projet
 
+```
 Bert-Classification-Sentiment/
 ├── data/
 │   └── train.csv              ← dataset Twitter Sentiment
@@ -64,6 +65,7 @@ Bert-Classification-Sentiment/
 ├── utils.py                   ← seed, device, courbes, matrice confusion
 ├── requirements.txt
 └── README.md
+```
 
 ---
 
@@ -142,33 +144,34 @@ python demo.py
 ```
 
 L'interface est accessible sur `http://localhost:7860`
-Un lien public partageable est généré automatiquement.
+Un lien public :`https://47d40ac7b6057a95b7.gradio.live` 
 
 ---
 
 ## Résultats
 
-### Métriques finales
+### Métriques finales (validation — 5 496 exemples)
 
-| Métrique      | Validation |
-|---------------|------------|
-| val_accuracy  | X.XX%      |
-| val_f1_score  | X.XXX      |
-| val_loss      | X.XXXX     |
-
-*À compléter après entraînement*
+| Classe    | Précision | Recall | F1-score | Support |
+|-----------|-----------|--------|----------|---------|
+| negative  | 0.79      | 0.80   | 0.80     | 1 556   |
+| neutral   | 0.77      | 0.74   | 0.75     | 2 223   |
+| positive  | 0.82      | 0.85   | 0.83     | 1 717   |
+| **accuracy**  |       |        | **0.79** | 5 496   |
+| macro avg | 0.79      | 0.80   | 0.79     | 5 496   |
+| weighted avg | 0.79   | 0.79   | 0.79     | 5 496   |
 
 ### Courbes d'apprentissage
 
-*Insérer capture d'écran de `checkpoints/learning_curves.png`*
+*Ref : dossier résultat*
 
 ### Matrice de confusion
 
-*Insérer capture d'écran de `checkpoints/confusion_matrix.png`*
+*Ref : dossier résultat*
 
 ### Démo Gradio
 
-*Insérer capture d'écran de l'interface en fonctionnement*
+*Ref : dossier résultat*
 
 ---
 
@@ -211,4 +214,4 @@ Un lien public partageable est généré automatiquement.
 
 ## Dépendances
 
-Voir `requirements.txt` :
+Voir `requirements.txt`
