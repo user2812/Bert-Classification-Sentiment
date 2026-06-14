@@ -180,7 +180,7 @@ def get_dataloaders(
 if __name__ == "__main__":
     from transformers import BertTokenizer
 
-    CSV_PATH  = "data/train.csv"
+    CSV_PATH  = "data/train-3.csv"
     tokenizer = BertTokenizer.from_pretrained("bert-base-uncased")
 
     train_loader, valid_loader = get_dataloaders(
