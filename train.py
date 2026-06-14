@@ -305,14 +305,14 @@ if __name__ == "__main__":
     device = get_device()
 
     # Hyperparamètres
-    CSV_PATH       = "data/train.csv"
+    CSV_PATH       = "data/train-3.csv"
     MODEL_NAME     = "bert-base-uncased"
     MAX_LENGTH     = 128
-    BATCH_SIZE     = 16
+    BATCH_SIZE     = 32
     EPOCHS         = 5
-    LR             = 2e-5
-    WEIGHT_DECAY   = 0.01
-    WARMUP_RATIO   = 0.1
+    LR             = 1e-5
+    WEIGHT_DECAY   = 0.05
+    WARMUP_RATIO   = 0.15
     PATIENCE       = 3
     CHECKPOINT_DIR = "checkpoints"
 
@@ -344,11 +344,22 @@ if __name__ == "__main__":
 
     # Loss + Optimiseur
     criterion = nn.CrossEntropyLoss()
-    optimizer = AdamW(
-        model.parameters(),
-        lr           = LR,
-        weight_decay = WEIGHT_DECAY,
-    )
+    # Séparation des paramètres pour n'appliquer le Weight Decay que là où c'est nécessaire
+    param_optimizer = list(model.named_parameters())
+    no_decay = ["bias", "LayerNorm.weight", "LayerNorm.bias"]
+    
+    optimizer_grouped_parameters = [
+        {
+            "params": [p for n, p in param_optimizer if not any(nd in n for nd in no_decay)],
+            "weight_decay": WEIGHT_DECAY,
+        },
+        {
+            "params": [p for n, p in param_optimizer if any(nd in n for nd in no_decay)],
+            "weight_decay": 0.0,
+        },
+    ]
+
+    optimizer = AdamW(optimizer_grouped_parameters, lr=LR)
 
     # Scheduler linéaire avec warmup (recommandé pour BERT)
     total_steps  = len(train_loader) * EPOCHS
