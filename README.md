@@ -215,3 +215,22 @@ Un lien public :`https://47d40ac7b6057a95b7.gradio.live`
 ## Dépendances
 
 Voir `requirements.txt`
+Voir `requirements.txt` :
+torch>=2.0.0
+torchvision>=0.15.0
+transformers>=4.30.0
+gradio>=4.0.0
+scikit-learn>=1.3.0
+pandas>=2.0.0
+numpy>=1.24.0
+tqdm>=4.65.0
+matplotlib>=3.7.0
+Pillow>=9.5.0
+
+---
+
+## Liens
+
+- Documentation BERT : https://huggingface.co/bert-base-uncased
+- Documentation Gradio : https://www.gradio.app/
+- Documentation PyTorch : https://pytorch.org/docs/
